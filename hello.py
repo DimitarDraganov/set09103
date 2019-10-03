@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, abort
 app = Flask(__name__)
 
 @app.route("/")
@@ -18,6 +18,15 @@ def private():
 @app.route('/login')
 def login():
     return "Now we would get username & password"
+
+@app.route('/force404')
+def force404():
+    abort(404)
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return "Couldnt find the PAGE you requested", 404
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
