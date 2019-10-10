@@ -5,6 +5,16 @@ app = Flask(__name__)
 def root():
     return "The default, 'root' route"
 
+@app.route("/hallo/")
+def hallo():
+    name = request.args.get('name', '')
+
+    if name == '':
+        return "no param supplied"
+    else:
+        return "Hallo %s" % name
+
+
 @app.route("/hello/<name>")
 def hello(name):
     return "Hello %s" % name
