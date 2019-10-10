@@ -30,7 +30,7 @@ def page_not_found(error):
 @app.route('/static-example/img')
 def static_example_img():
     start = '<img src="'
-    url = url_for('static', filename='vmask.jpg')
+    url = url_for('static', filename='upload.jpg')
     end = '">'
     return start+url+end, 200
 
