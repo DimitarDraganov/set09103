@@ -5,6 +5,14 @@ app = Flask(__name__)
 def root():
     return "The default, 'root' route"
 
+@app.route("/hello/<name>")
+def hello(name):
+    return "Hello %s" % name
+
+@app.route("/add/<int:first>/<int:second>")
+def add(first, second):
+    return str(first+second)
+
 @app.route("/account/", methods=['GET', 'POST'])
 def account():
     if request.method == 'POST':
